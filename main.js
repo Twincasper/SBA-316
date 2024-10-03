@@ -59,8 +59,6 @@ const renderTodoCard = (todo, index) => {
   todosList.appendChild(li);
 };
 
-// At this point, we'll start writing the actual dom code to handle user interactions and render the todo cards, and then subsequently call the functions to fetch and set the todos from localStorage.
-
 const renderTodos = () => {
   document.querySelector('ul#todos-list').innerHTML = "";
   getAllTodos().forEach((todo, index) => renderTodoCard(todo, index));
@@ -82,11 +80,28 @@ const handleNewTodo = (e) => {
   form.reset();
 };
 
+const handleTodoChange = (e) => {
+  if (!e.target.matches('input[type="checkbox"]')) return;
+  const li = e.target.parentNode.parentNode.parentNode;
+  const index = li.dataset.index;
+  toggleTodoComplete(index);
+  renderTodos();
+};
+
+const handleDelete = (e) => {
+  if (!e.target.matches('button.delete-todo')) return;
+  const li = e.target.parentNode.parentNode;
+  const index = li.dataset.index;
+  deleteTodo(index);
+  renderTodos();
+};
+
 const main = () => {
   const form = document.querySelector("form#new-todo-form");
   form.addEventListener('submit', handleNewTodo);
   const ul = document.querySelector('ul#todos-list');
-  // Maybe implement a handler to implement the complete and delete buttons
+  ul.addEventListener('input', handleTodoChange);
+  ul.addEventListener('click', handleDelete);
   
   renderTodos();
 };
