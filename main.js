@@ -60,3 +60,35 @@ const renderTodoCard = (todo, index) => {
 };
 
 // At this point, we'll start writing the actual dom code to handle user interactions and render the todo cards, and then subsequently call the functions to fetch and set the todos from localStorage.
+
+const renderTodos = () => {
+  document.querySelector('ul#todos-list').innerHTML = "";
+  getAllTodos().forEach((todo, index) => renderTodoCard(todo, index));
+};
+
+const handleNewTodo = (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+  const newTodo = {
+    title: form.todoTitle.value,
+    isComplete: false
+  };
+
+  addTodo(newTodo);
+
+  renderTodos();
+  
+  form.reset();
+};
+
+const main = () => {
+  const form = document.querySelector("form#new-todo-form");
+  form.addEventListener('submit', handleNewTodo);
+  const ul = document.querySelector('ul#todos-list');
+  // Maybe implement a handler to implement the complete and delete buttons
+  
+  renderTodos();
+};
+
+main();
