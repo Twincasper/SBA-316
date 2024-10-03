@@ -27,7 +27,7 @@ export const addTodo = (todo) => {
 
 export const toggleTodoComplete = (index) => {
   const todos = getAllTodos();
-  todos[index].isComplete = !todos[index].isComplete; // Toggle the isComplete property
+  todos[index].isComplete = !todos[index].isComplete;
   setTodos(todos);
 };
 
@@ -37,7 +37,6 @@ export const deleteTodo = (index) => {
   setTodos(todos);
 };
 
-// Maybe initialize the app with existing todos, we can use getElementsByClassName to get all elements with class 'todo-card', or just check if getAllTodos() returns an empty array.
 
 const renderTodoCard = (todo, index) => {
   const todosList = document.querySelector("ul#todos-list");
@@ -47,6 +46,7 @@ const renderTodoCard = (todo, index) => {
   li.dataset.index = index;
   li.classList.add('todo-card');
   h3.textContent = todo.title;
+  h3.contentEditable = true;
 
   const labelInputButton = document.createElement('div');
   labelInputButton.innerHTML = `
