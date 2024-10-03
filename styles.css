@@ -5,7 +5,8 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #292c61;
+  /* background-color: #292c61; */
+  background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -50,14 +51,16 @@ h2 {
   flex-direction: column;
   margin: 1rem;
   border-radius: 0.3rem;
-  background: rgb(116, 123, 255);
+  background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
   box-shadow: rgba(116, 123, 255, 0.4) -5px 5px, rgba(116, 123, 255, 0.3) -10px 10px, rgba(116, 123, 255, 0.2) -15px 15px, rgba(116, 123, 255, 0.1) -20px 20px, rgba(116, 123, 255, 0.05) -25px 25px;
 }
 
 .todo-card:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: 3s;
 }
+
+/* For .todo-cards that have a complete attribute, I may want to style them into their own flex column off to the side for aesthetics, or strikethrough their text or change their color. Just some sort of visual indicator */
 
 
 @media (prefers-color-scheme: light) {
