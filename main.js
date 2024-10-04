@@ -104,8 +104,12 @@ const handleDelete = (e) => {
   if (!e.target.matches('button.delete-todo')) return;
   const li = e.target.parentNode.parentNode;
   const index = li.dataset.index;
-  deleteTodo(index);
-  renderTodos();
+  const confirmDelete = window.confirm("You're getting rid of me? :(");
+
+  if (confirmDelete) {
+    deleteTodo(index);
+    renderTodos();
+  }
 };
 
 const main = () => {
