@@ -68,6 +68,10 @@ const handleNewTodo = (e) => {
   e.preventDefault();
 
   const form = e.target;
+  if (form.todoTitle.value.trim() === "") {
+    window.alert("HEHEHEE NO EMPTY TITLES PLEASE");
+    return;
+  }
   const newTodo = {
     title: form.todoTitle.value,
     isComplete: false
@@ -82,11 +86,19 @@ const handleNewTodo = (e) => {
 
 const handleTodoChange = (e) => {
   if (!e.target.matches('input[type="checkbox"]')) return;
-  const li = e.target.parentNode.parentNode.parentNode;
+  const li = e.target.closest('li');
   const index = li.dataset.index;
   toggleTodoComplete(index);
-  renderTodos();
+
+  const todo = getAllTodos()[index];
+
+  if (todo.isComplete) {
+    li.classList.add('completed');
+  } else {
+    li.classList.remove('completed');
+  }
 };
+
 
 const handleDelete = (e) => {
   if (!e.target.matches('button.delete-todo')) return;

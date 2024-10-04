@@ -60,6 +60,15 @@ h2 {
   transition: 3s;
 }
 
+.todo-card.completed h3 {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-card.completed {
+  background: linear-gradient(90deg, #9ebd13 0%, #008552 100%);
+}
+
 /* For .todo-cards that have a complete attribute, I may want to style them into their own flex column off to the side for aesthetics, or strikethrough their text or change their color. Just some sort of visual indicator */
 
 
